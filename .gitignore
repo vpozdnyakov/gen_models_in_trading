@@ -5,3 +5,4 @@ report/main.fdb_latexmk
 report/main.blg
 report/main.bbl
 report/main.aux
+.DS_Store
