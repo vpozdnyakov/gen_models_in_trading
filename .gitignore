@@ -7,3 +7,5 @@ report/main.bbl
 report/main.aux
 .DS_Store
 .Rproj.user
+.RData
+.Rhistory
