@@ -1,11 +1,13 @@
 #' ---
-#' title: "Limit of random walk"
+#' title: "Wiener process as the limit of a random walk"
 #' author: "Vitaliy Pozdnyakov"
 #' date: "January 2020"
 #' output: pdf_document
 #' ---
 
-# ex1.07.R
+#' $$W(t) = \frac{S_{[nt]}}{\sqrt n}$$
+#' where
+#' $$S_n = X_1 + \dots + X_n$$
 set.seed(1)
 n <- 10
 T <- 1

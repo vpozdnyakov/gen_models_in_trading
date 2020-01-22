@@ -1,11 +1,13 @@
 #' ---
-#' title: "Wiener process"
+#' title: "Wiener process by definition"
 #' author: "Vitaliy Pozdnyakov"
 #' date: "January 2020"
 #' output: pdf_document
 #' ---
 
-# ex1.06.R
+#' $$W(t + \Delta t) = W(t) + \sqrt n z$$
+#' where $z$ is a realization from $Z \sim N(0, 1)$
+
 set.seed(123)
 N <- 100
 T <- 1
