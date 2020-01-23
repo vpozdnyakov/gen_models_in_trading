@@ -1,16 +1,23 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-
 \usepackage[margin=3cm]{geometry}
-
 \usepackage[nottoc]{tocbibind}
+\usepackage{amssymb}
+%\usepackage{amsmath}
+\usepackage{amsmath}
 
 \usepackage[square,numbers]{natbib}
 \bibliographystyle{abbrvnat}
 
 \usepackage{sectsty}
 \subsubsectionfont{\normalfont\itshape}
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\DeclareMathOperator{\Var}{Var}
 
 \renewcommand\thesubsubsection{\Alph{subsubsection}}
 
@@ -34,7 +41,29 @@ Introduction, related works, business case
 
 \subsection{Stochastic differential equations}
 
-Stochastic differential equations
+\theoremstyle{definition}
+\begin{definition}
+    A stochastic process is a random variable of the form
+    $$X(t, \omega): T \times \Omega \to \mathbb R$$
+\end{definition}
+
+\begin{definition}
+    A stochastic process $W = \{W(t)\}_{t\geq0}$ is called a Wiener process if the following properties hold:
+    \begin{enumerate}
+        \item $W(0) = 0$ with probability 1
+        \item $\mathbb E W(t) = 0$
+        \item $\Var[W(b) - W(a)] = b-a$ for all $0\leq a \leq b \leq T$
+        \item $W(b) - W(a) \sim \mathcal N (0, b-a)$
+        \item $W(b) - W(a)$ and $W(d) - W(c)$ are independent for all $a \leq b \leq c \leq d$
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    A stochastic differential equation is an equation of the form
+    \begin{equation}
+        \mathrm d S(t) = \mu S(t) \mathrm dt + \sigma S(t) \mathrm d W(t)
+    \end{equation}
+\end{definition}
 
 \subsubsection{Black-Scholes-Merton or geometric Brownian motion}
 Black-Scholes-Merton or geometric Brownian motion

@@ -1,11 +1,11 @@
 #' ---
-#' title: "Preferential sampling"
+#' title: "Variance reduction"
 #' author: "Vitaliy Pozdnyakov"
 #' date: "January 2020"
 #' output: pdf_document
 #' ---
 
-# ex1.02.R
+#' # Preferential sampling
 set.seed(123)
 n <- 10000
 beta <- 1
