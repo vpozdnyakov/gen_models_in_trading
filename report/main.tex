@@ -44,29 +44,49 @@ Introduction, related works, business case
 \theoremstyle{definition}
 \begin{definition}
     A stochastic process is a random variable of the form
-    $$X(t, \omega): T \times \Omega \to \mathbb R$$
+    $$X_t(\omega): T \times \Omega \to \mathbb R$$
 \end{definition}
 
 \begin{definition}
-    A stochastic process $W = \{W(t)\}_{t\geq0}$ is called a Wiener process if the following properties hold:
+    A stochastic process $W = W_0, W_1, \dots, W_T$ is called a Wiener process if the following properties hold:
     \begin{enumerate}
-        \item $W(0) = 0$ with probability 1
-        \item $\mathbb E W(t) = 0$
-        \item $\Var[W(b) - W(a)] = b-a$ for all $0\leq a \leq b \leq T$
-        \item $W(b) - W(a) \sim \mathcal N (0, b-a)$
-        \item $W(b) - W(a)$ and $W(d) - W(c)$ are independent for all $a \leq b \leq c \leq d$
+        \item $W_0 = 0$ with probability 1
+        \item $\mathbb E W_t = 0$
+        \item $\Var[W_b - W_a] = b - a$ for all $0\leq a \leq b \leq T$
+        \item $W_b - W_a \sim \mathcal N (0, b-a)$
+        \item $W_b - W_a$ and $W_d - W_c$ are independent for all $a \leq b \leq c \leq d$
     \end{enumerate}
 \end{definition}
 
 \begin{definition}
     A stochastic differential equation is an equation of the form
-    \begin{equation}
-        \mathrm d S(t) = \mu S(t) \mathrm dt + \sigma S(t) \mathrm d W(t)
-    \end{equation}
+    $$\mathrm d S_t = \mu S_t \mathrm dt + \sigma S_t \mathrm d W_t$$
+    where $\mu$ and $\sigma$ are some constants or some fucntions which represent the interest rate of nonrisky activities and is the market volatility respectively.
+\end{definition}
+
+\begin{definition}
+    An Ito process is a stochastic process such that
+    $$X_t = X_0 + \int_0^t g(s) \mathrm ds + \int_0^t h(s) \mathrm dW_s$$
+    where $g(t, \omega)$ and $h(t, \omega)$ are random functions such that
+    $$P \left( \int_0^T |g(w, t)| \mathrm dt  < \infty\right) = 1 \text{ and } P \left( \int_0^T h(w, t)^2 \mathrm dt  < \infty\right) = 1$$
+\end{definition}
+
+\begin{definition}
+    A diffusion process is the solution of SDE of the form
+    $$\mathrm d X_t = b(t, X_t) \mathrm  d t + \sigma(t, X_t) \mathrm d W_t$$
+    where some deterministic functions $b$ and $\sigma$ are called the \emph{drift} and the \emph{diffusion} coefficient of SDE such that
+    $$P\left\{\int_0^T \sup_{|x|\leq \mathbb R}(|b(t, x)| + \sigma^2(t, x))\mathrm dt < \infty\right\} = 1$$
 \end{definition}
 
 \subsubsection{Black-Scholes-Merton or geometric Brownian motion}
-Black-Scholes-Merton or geometric Brownian motion
+
+\begin{definition}
+    The  Black-Scholes-Merton is described by the stochastic differential equation of the form
+    $$\mathrm d X_t = \theta_1 X_t \mathrm d t + \theta_2 X_t \mathrm d W_t, X_0=x_0$$
+    with $\theta_2 > 0$. The parameter $\theta_1$ represents the constant interest rate and $\theta_2$ --- the volatility of risky activities.
+\end{definition}
+
+The explicit solution is $$X_t = x_0 \exp\left\{ \left(\theta_1 - \frac{1}{2}\theta_2^2 \right) t + \theta_2 W_t \right\}$$
 
 \subsubsection{Cox-Ingersoll-Ross}
 Cox-Ingersoll-Ross

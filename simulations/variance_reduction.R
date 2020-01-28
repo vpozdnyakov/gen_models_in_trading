@@ -20,7 +20,6 @@ t.test(y[1:100])
 t.test(y[1:1000])
 t.test(y)
 
-# ex1.03.R
 n <- 10000
 beta <-1
 K <- 1

@@ -6,7 +6,7 @@
 #' ---
 
 #' # By definition
-#' $$W(t + \Delta t) = W(t) + \sqrt n z$$
+#' $$W(t + \Delta t) = W(t) + z\sqrt{\Delta t}$$
 #' where $z$ is a realization from $Z \sim N(0, 1)$
 
 set.seed(123)
