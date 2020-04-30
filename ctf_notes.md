@@ -1,9 +1,9 @@
 # Commodity Traiding Firms (CTF)
 
 Commodity Transformation:
-* in space - using logistics
-* in time - through storage
-* in form - with processing
+* **in space** - using logistics
+* **in time** - through storage
+* **in form** - with processing
 
 CTFs **undertake physical arbitrage activities**, which involve the simultaneous purchase and sale of a commodity in different forms.
 
@@ -52,55 +52,54 @@ _For example, shipping a cargo of oil on a very large cruise carrier are heavily
 **Legal/Reputational Risk** — environmental damage, anti-corruption laws.
 
 # Risk Management
-To quantify the potential benefits of diversification, I have evaluated data on world trade flows by commodity code.
+Evaluation data on world trade flows by commodity code To quantify the potential benefits of diversification.
 
 There are two sets of correlations:
-1. Nominal Trade flows — correlations between percentage changes in trade flows across commodities (US)
-2. Deflated trade flows — (nominal trade flow in a given year / the nominal price of the commodity), scaled so that the 2001 value is 1.00 (value).
+1. **Nominal Trade flows** — correlations between percentage changes in trade flows across commodities (US)
+2. **Deflated trade flows** — (nominal trade flow in a given year / the nominal price of the commodity), scaled so that the 2001 value is 1.00 (value).
 
-The derived demand for the services of commodity trading firms, and their profitability, is dependent on the quantities of commodities traded, rather than prices. Therefore, the correlations based on deflated data are more relevant for evaluating the potential benefits to the firms of diversification across commodities. The lack of correlation generally, and the prevalence of negative correlations indicate the potential benefits of diversification across commodities in reducing the variability of trading firm risk.
+The correlations based on deflated data are more relevant for evaluating the potential benefits to the firms of diversification across commodities. The lack of correlation generally, and the prevalence of **negative correlations** indicate the **potential benefits of diversification** across commodities in reducing the variability of trading firm risk.
 
-Diversification can reduce a risk.
+Risk reduction:
+* Diversification across commodities
+* Integration in the value chain
 
-Integration in the value chain can reduce a risk.
+It uses **Monte-Carlo** simulations to predict P&L outcomes in multiple scenarios.
 
-Value-at-Risk (VaR) as a risk measurement tool.
+Augmentation its VaR data with stress tests and analysis that estimate P&L outcomes in **extreme scenarios**.
 
-It uses Monte-Carlo simulations to predict P&L outcomes in multiple scenarios.
-
-Trafigura augments its VaR data with stress tests and analysis that estimate P&L outcomes in extreme scenarios.
-
-The company establishes limits on these quantitative risk measures. A team is notified when its measured risk approaches its assigned limit.
+The company **establishes limits** on these quantitative risk measures. A team is notified when its measured risk approaches its assigned limit.
 
 Trafigura and other traders operating in this way endeavor to hedge all the risk via futures or swaps, self-finance the initial margins, and also finance any mismatches in variation margin payments.
 
-In addition to hedging inventories, Trafigura also routinely hedges future physical transactions. For instance, it may enter into an agreement to purchase crude from West Africa for delivery in two months at the Brent price plus/minus a differential, and enter into another contract to sell that cargo to a US refiner at the West Texas Intermediate price plus/ minus a differential. This set of transactions exposes the company to fluctuations in the Brent-WTI differential, which it can, and routinely does, hedge by buying Brent futures and selling WTI futures.
+# Value-at-Risk (VaR)
 
-# Value-at-Risk
+VaR is a risk measurement tool.
 
-**Value-at-Risk** is defined as the amount of money, or more, that can be lost over a given time horizon with a given probability.
+VaR is defined as the amount of money, or more, that can be lost over a given time horizon with a given probability.
 
 _Implementation of VaR requires the user to choose a probability level, and a time horizon. Consistent with standard industry practice, Trafigura uses a one-day time horizon, and a 95% probability (“confidence”) level. As of 30 September, 2013, Trafigura reported its VaR as $11.3 million. This means that on 95% of trading days, the company would be expected to suffer losses of less than $11.3 million. Put differently, on 5% of trading days, the firm could expect to lose more than $11.3 million._
 
-The company has established a VaR target. Specifically, the firm attempts to maintain VaR at less than 1% of group equity.
+The company has established a VaR target. Specifically, the firm attempts to maintain VaR **at less than 1% of group equity**.
 
-This is acceptable for calculating VaR, but as will be discussed in more detail below, it is important for trading companies to understand the likelihood of outcomes that are **more extreme than the VaR**.
+This is acceptable for calculating VaR, but as will be discussed in more detail below, it is important for trading companies to understand the likelihood of **outcomes** that are **more extreme than the VaR**.
 
-That is, it is important to understand what happens in the left tail
-of the probability distribution of possible outcomes.
+It is important to understand what happens in the **left tail** of the probability distribution of possible outcomes.
 
-Trafigura uses the heavy-tailed distribution fitted to the portfolio profit and loss simulation outcomes to calculate VaR, and to calculate other measures of risk that focus on extreme losses
+Trafigura uses the **heavy-tailed distribution** fitted to the portfolio profit and loss simulation outcomes to calculate VaR, and to calculate other measures of risk that focus on extreme losses
 
-The most problematic feature of historical VaR simulations is that the user is a prisoner of the historical data.
+The most problematic feature of historical VaR simulations is that the user is a **prisoner of the historical data**.
 
-Price movements during the 2007-2008 Financial Crisis were far outside anything experienced in the historical data used by firms to calculate VaR at that time.
+_Price movements during the 2007-2008 Financial Crisis were far outside anything experienced in the historical data used by firms to calculate VaR at that time._
 
 VaR is increasingly being augmented by **stress tests** that estimate possible losses under extreme scenarios that may not be present in the historical data.
 
-Companies in commodity and financial trading augment VaR with other methods: in particular, methods that quantify how large might be the losses a firm could incur, if the loss is bigger than its VaR.
+Companies in commodity and financial trading augment VaR with other methods: in particular, methods that quantify how large might be the losses a firm could incur, if **the loss is bigger than its VaR**.
 
 **Conditional VaR** — the average of losses in excess of VaR.
 
 **Extreme Value Analysis** estimates the probability of more extreme outcomes with losses substantially greater than VaR.
 
-**Procyclicality** — feedback loops between risk evaluation and response to this evaluation.
+Problems of VaR:
+* Short-time horizon conventionally employed
+* **Procyclicality** — feedback loops between risk evaluation and response to this evaluation.
