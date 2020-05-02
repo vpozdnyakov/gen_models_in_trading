@@ -1,10 +1,7 @@
 \documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
-\usepackage[margin=3cm]{geometry}
-\usepackage[nottoc]{tocbibind}
+\usepackage[margin=3.5cm]{geometry}
+\setlength{\parindent}{0pt}
 \usepackage{amssymb}
-%\usepackage{amsmath}
 \usepackage{amsmath}
 
 \usepackage[square,numbers]{natbib}
@@ -21,7 +18,7 @@
 
 \renewcommand\thesubsubsection{\Alph{subsubsection}}
 
-\title{Application of Generative Models \\ in Commodity Trading}
+\title{Application of Generative Models for Risk Measurement in Commodity Trading}
 
 \author{Vitaliy Pozdnyakov}
 \date{}
@@ -86,11 +83,21 @@ Methodology
 
 \begin{definition}
     The  Black-Scholes-Merton is described by the stochastic differential equation of the form
-    $$\mathrm d X_t = \theta_1 X_t \mathrm d t + \theta_2 X_t \mathrm d W_t, X_0=x_0$$
-    with $\theta_2 > 0$. The parameter $\theta_1$ represents the constant interest rate and $\theta_2$ --- the volatility of risky activities.
+    $$\mathrm d X_t = r X_t \mathrm d t + \sigma X_t \mathrm d W_t$$
+    with $X_0=x_0$ and $\theta_2 > 0$. The parameter $\theta_1$ represents the constant interest rate and $\theta_2$ --- the volatility of risky activities.
 \end{definition}
 
-The explicit solution is $$X_t = x_0 \exp\left\{ \left(\theta_1 - \frac{1}{2}\theta_2^2 \right) t + \theta_2 W_t \right\}$$
+The explicit solution is 
+
+$$S(t) = S(0) \exp\left[ \left(r - \frac{\sigma^2}{2} \right) t + \sigma W(t) \right]$$
+
+And the sumulation increment form is
+
+$$S(t+\Delta t) = S(t)\exp\left[ \left( r - \frac{\sigma^2}{2} \right) \Delta t + \sigma \sqrt{\Delta t} Z \right]$$
+
+Euler scheme
+
+$$\Delta \log S = \left( r - \frac{\sigma^2}{2} \right)\Delta t + \sigma \sqrt{\Delta t}Z$$
 
 \subsubsection{Cox-Ingersoll-Ross}
 Cox-Ingersoll-Ross
