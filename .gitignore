@@ -11,3 +11,4 @@ report/main.aux
 .Rhistory
 */.ipynb_checkpoints/*
 generation_1/output/*
+generation_1/data/.ipynb_checkpoints/*
