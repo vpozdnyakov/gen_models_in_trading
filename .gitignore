@@ -9,6 +9,13 @@ report/main.aux
 .Rproj.user
 .RData
 .Rhistory
-*/.ipynb_checkpoints/*
 generation_1/output/*
-generation_1/data/.ipynb_checkpoints/*
+generation_2/output/*
+report/ОТЗЫВ НА КР.docx
+report/title_page.docx
+report/pozdnyakov_v_v_primenenie-generativnyh-modeley-dlya-ocenki-riska-v-torgovle-syrevymi-tovarami.pdf
+report/title_page.pdf
+report/main.out
+report/main.toc
+report/ctf_notes.md
+generation_2/.ipynb_checkpoints/*
