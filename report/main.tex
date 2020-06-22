@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage[margin=3.5cm]{geometry}
+\usepackage[margin=3cm]{geometry}
 %\setlength{\parindent}{0pt}
 \usepackage{amssymb}
 \usepackage{amsmath}
@@ -116,7 +116,7 @@ The multidimensional extension of GBM was described in \cite{sabino2007monte} as
 \end{equation*}
 where $C_R$ is the Cholesky decomposition of the autocorrelation matrix $\mathbf P$. The estimation of the autocorrelation matrix can be given as the empirical autocorrelation matrix $\hat {\mathbf P}$. In Figure \ref{fig:gbm1} shows an example of three runs by two GBMs with high correlation that start from the same position.
 
-\begin{figure}[ht!]
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{pics/gbm.png}
     \caption{Example of three runs by two high-correlated GBMs}
@@ -181,9 +181,9 @@ where $\mathbf{P}$ is a correlation matrix, $\mathbf{t}_{\nu, \mathbf{P}}$ is th
     \label{fig:mem}
 \end{figure}
 
-\subsection{Generative adversarial networks}
+\subsection{Generative Adversarial Networks}
 \label{section:gan}
-The GAN consists of two parts: the generator $G$ and the discriminator $D$. The task of the discriminator $D$ is to distinguish generated data from real data, while the task of the generator $G$ is to "trick" the discriminator by generating more and more accurate data. GANs differ in architecture depending on which models are selected for the generator and discriminator. In my work I use architecture proposed in \cite{xu2018synthesizing} and provided in an open source Python package \cite{tgan}. The generator use long-short-term memory (LSTM) network, and the discriminator use Multi-Layer Perceptron (MLP). Here I briefly describe architecture of this GAN.
+The Generative Adversarial Networks (GAN) consists of two parts: the generator $G$ and the discriminator $D$. The task of the discriminator $D$ is to distinguish generated data from real data, while the task of the generator $G$ is to "trick" the discriminator by generating more and more accurate data. GANs differ in architecture depending on which models are selected for the generator and discriminator. In my work I use architecture proposed in \cite{xu2018synthesizing} and provided in an open source Python package \cite{tgan}. The generator use long-short-term memory (LSTM) network, and the discriminator use Multi-Layer Perceptron (MLP). Here I briefly describe architecture of this GAN.
 
 \textbf{Generator $G$}. The size of an output and hidden state of the LSTM is denoted by $n_h$. A random variable $z$ is fed to the LSTM input at each time $t$, as well as a hidden vector $f_{t-1}$ or an embedding vector $f'_{t-1}$, depending on the type of previous output. The weighted context vector $a_{t-1}$ is also fed to input. The random variable $z$ has dimension $n_z$ and each dimension is generated from the distribution $N(0, 1)$. The context vector $a_t$ weighted by all previous outputs of the LSTM has the dimension $n_h$. The $a_t$ vector is calculated as
 $$a_{t}=\sum_{k=1}^{t} \frac{\exp (\alpha_{t, k})}{\sum_{j} \exp (\alpha_{t, j})} h_{k}.$$
@@ -237,7 +237,7 @@ For risk measurement, many CTFs use the Monte-Carlo simulations method to predic
 
 \section{Dataset description}
 \label{section:dataset}
-For this work I use the Rogers International Commodity Index, which is a set of indices with a wide range of commodities consumed in the global economy. A weighted values of the index is estimated using futures contracts for exchange-traded physical goods consisting of 38 commodities. All commodities are divided into three indexes: Energy, Metals and Agriculture. I use the energy \cite{RICI} index, which consists of 6 energy commodities:
+For this work I use the Rogers International Commodity Index, which is a set of indices with a wide range of commodities consumed in the global economy. Weighted values of the index is estimated using futures contracts for exchange-traded physical goods consisting of 38 commodities. All commodities are divided into three indexes: Energy, Metals and Agriculture. I use the energy \cite{RICI} index, which consists of 6 energy commodities:
 
 \begin{itemize}
     \item Crude Oil -- 37.50\% (called as \texttt{crude} in the figures)
@@ -252,14 +252,14 @@ Commodity prices were downloaded from the site \url{https://investing.com/} for 
 $$r_t = \frac{x_t - x_{t-1}}{x_{t-1}}.$$
 Obtained time series for Aug-Oct 2008 is shown in Figure \ref{fig:returns}. The resulting correlation matrix is shown in Figure \ref{fig:heatmap}. As we can see, there is the highest correlation between Brent and Heating Oil commodities (0.87), Natural Gas and Gas Oil have the lowest correlation (0.12), there are no negatively correlated commodities.
 
-\begin{figure}[h!]
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{pics/returns.png}
     \caption{Time series by returns of commodities}
     \label{fig:returns}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{pics/heatmap.pdf}
     \caption{Correlation matrix of commodities by returns}
@@ -359,7 +359,7 @@ After training, I generate 10,000 observations from the models and compared them
 
 I apply Kolmogorov-Smirnov test (KS) and Kullback–Leibler divergence (KL) to compare generation quality. To calculate a single value for all commodities for Kolmogorov-Smirnov test, I use the average value for all commodities, for Kullback-Leibler divergence I use the sum for all commodities. The test results are shown in Table \ref{tab:quality}.
 
-\begin{table}[ht!]
+\begin{table}[h]
     \begin{center}
     \begin{tabular}{ |c|c|c|c| } 
     \hline
@@ -382,7 +382,7 @@ with $i \in \{1, 2, 3, 4, 5 , 6\}$ commodities, returns values $r_{t, i}$ and we
 
 I calculate VaR and CVaR with one day time horizon and 95\% confidence level using obtained distributions. The resulting values by models are represented in Table \ref{tab:var} as well as the real VaR and CVaR values based on one day profits from the test set of observations.
 
-\begin{figure}[ht!]
+\begin{figure}[h]
     \centering
     \begin{minipage}{.5\linewidth}
         \centering
@@ -396,7 +396,7 @@ I calculate VaR and CVaR with one day time horizon and 95\% confidence level usi
     \label{fig:profit}
 \end{figure}
 
-\begin{table}[ht!]
+\begin{table}[h]
     \begin{center}
     \begin{tabular}{ |c|c|c|c| } 
     \hline
