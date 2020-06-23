@@ -181,9 +181,9 @@ where $\mathbf{P}$ is a correlation matrix, $\mathbf{t}_{\nu, \mathbf{P}}$ is th
     \label{fig:mem}
 \end{figure}
 
-\subsection{Generative Adversarial Networks}
+\subsection{Generative Adversarial Network}
 \label{section:gan}
-The Generative Adversarial Networks (GAN) consists of two parts: the generator $G$ and the discriminator $D$. The task of the discriminator $D$ is to distinguish generated data from real data, while the task of the generator $G$ is to "trick" the discriminator by generating more and more accurate data. GANs differ in architecture depending on which models are selected for the generator and discriminator. In my work I use architecture proposed in \cite{xu2018synthesizing} and provided in an open source Python package \cite{tgan}. The generator use long-short-term memory (LSTM) network, and the discriminator use Multi-Layer Perceptron (MLP). Here I briefly describe architecture of this GAN.
+The Generative Adversarial Network (GAN) consists of two parts: the generator $G$ and the discriminator $D$. The task of the discriminator $D$ is to distinguish generated data from real data, while the task of the generator $G$ is to "trick" the discriminator by generating more and more accurate data. GANs differ in architecture depending on which models are selected for the generator and discriminator. In my work I use architecture proposed in \cite{xu2018synthesizing} and provided in an open source Python package \cite{tgan}. The generator use long-short-term memory (LSTM) network, and the discriminator use Multi-Layer Perceptron (MLP). Here I briefly describe architecture of this GAN.
 
 \textbf{Generator $G$}. The size of an output and hidden state of the LSTM is denoted by $n_h$. A random variable $z$ is fed to the LSTM input at each time $t$, as well as a hidden vector $f_{t-1}$ or an embedding vector $f'_{t-1}$, depending on the type of previous output. The weighted context vector $a_{t-1}$ is also fed to input. The random variable $z$ has dimension $n_z$ and each dimension is generated from the distribution $N(0, 1)$. The context vector $a_t$ weighted by all previous outputs of the LSTM has the dimension $n_h$. The $a_t$ vector is calculated as
 $$a_{t}=\sum_{k=1}^{t} \frac{\exp (\alpha_{t, k})}{\sum_{j} \exp (\alpha_{t, j})} h_{k}.$$
