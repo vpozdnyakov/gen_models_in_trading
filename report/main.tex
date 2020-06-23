@@ -147,8 +147,8 @@ $$
 where $\mathbf{P}$ is a correlation matrix, $\mathbf{t}_{\nu, \mathbf{P}}$ is the joint $\mathrm{CDF}$ of $\mathbf{X} \sim \mathbf{t}_{d}(\nu, \mathbf{0}, \mathbf{P})$ and $t_{\nu}$ is the standard univariate CDF of a $t$-distribution with $\nu$ degrees of freedom. Generating observations from the $t$ copula is performed as follows:
 
 \begin{enumerate}
-    \item Generate $n$ observations from a $d$-dimensional $t$-distribution using fitted correlation matrix $P$ and degrees of freedom $\nu$.
-    $$(\mathbf{t}_1, \mathbf{t}_2, \dots, \mathbf{t}_n), \mathbf{t}_i \sim t_d(\nu, \mathbf{0}, \mathbf{P} ).$$
+    \item Generate $n$ observations from a $d$-dimensional $t$-distribution using fitted correlation matrix $P$ and degrees of freedom $\nu$
+    $$(\mathbf{t}_1, \mathbf{t}_2, \dots, \mathbf{t}_n), \mathbf{t}_i \sim \mathbf t_d(\nu, \mathbf{0}, \mathbf{P} ).$$
     An example is in Figure \ref{fig:copula1}.
     \item Use CDF for each marginal component of the observation to get $n$ uniform observations. Let $\mathbf{t} = [t_{1}, t_{2}, \dots, t_{d}]$, then each separate observation takes the form
     $$(u_1, u_2, \dots, u_d) = \left[t_{\nu}(t_{1}), t_{\nu}(t_{2}), \dots, t_{\nu}(t_{d})\right]$$
@@ -250,7 +250,7 @@ For this work I use the Rogers International Commodity Index, which is a set of 
 
 Commodity prices were downloaded from the site \url{https://investing.com/} for the period 01.01.2008 - 01.06.2020 in one-day increments, a total of 3476 observations. To compare the commoditity between them I convert the absolute prices to returns values of the form
 $$r_t = \frac{x_t - x_{t-1}}{x_{t-1}}.$$
-Obtained time series for Aug-Oct 2008 is shown in Figure \ref{fig:returns}. The resulting correlation matrix is shown in Figure \ref{fig:heatmap}. As we can see, there is the highest correlation between Brent and Heating Oil commodities (0.87), Natural Gas and Gas Oil have the lowest correlation (0.12), there are no negatively correlated commodities.
+Obtained time series for Aug-Oct 2008 is shown in Figure \ref{fig:returns}. The resulting correlation matrix is shown in Figure \ref{fig:heatmap}. As we can see, there is the highest correlation between Brent and Heating Oil commodities (0.87), Natural Gas and Crude Oil have the lowest correlation (0.034), there are no negatively correlated commodities.
 
 \begin{figure}[h]
     \centering
@@ -281,7 +281,7 @@ To test the quality of models, I take the first 70\% of observations: from 01.01
 I select the following parameters for GAN training (either empirically selected or using the default values set by the developers):
 \begin{itemize}
     \item Number of epochs to use during training: 5
-    \item Number of steps to run on each epoch: 10000
+    \item Number of steps to run on each epoch: 10,000
     \item Size of the batch to feed the model at each step: 200
     \item Number of dimensions in the noise input for the generator: 100
     \item Upper bound to the gaussian noise added to categorical columns: 0.2
@@ -293,7 +293,7 @@ I select the following parameters for GAN training (either empirically selected 
     \item Number of units per layer in the discriminator: 200
 \end{itemize}
 
-After training, I generate 10,000 observations from the models and compared them with observations from the test set (from 24.01.2017 to 01.06.2020). Figure \ref{fig:gens} shows an example of real and generated observations in the context of RBOB Gasoline and Natural Gas commodities. We can notice that the GBM model has shorter tails, this can be explained by the Gaussian distribution that underlies this model. The $t$ copula, $t$ marginals model has heavier tails that are distributed more evenly across the entire plane. The $t$ copula, Gaussian KDE marginals model also has wider tails, but the distribution is shifted to the right side of the plane. GAN has generated observations on a complex dependency structure, here we can see stable clusters of points in certain areas of the plane, so visually, it seems that the GAN model is prone to overfitting. Since I have generated 10000 observations from each model, I sort a sequence of these observations day-by-day to obtain a set of paths of price changes. The test set consists of about 1000 days, so I construct 10 paths by each model. The generated paths of Brent price is also depicted in Figure \ref{fig:paths}. The $t$ copula, $t$ marginals model has generated a few significant outliers, while other models seems more stable.
+After training, I generate 10,000 observations from the models and compared them with observations from the test set (from 24.01.2017 to 01.06.2020). Figure \ref{fig:gens} shows an example of real and generated observations in the context of RBOB Gasoline and Natural Gas commodities. We can notice that the GBM model has shorter tails, this can be explained by the Gaussian distribution that underlies this model. The $t$ copula, $t$ marginals model has heavier tails that are distributed more evenly across the entire plane. The $t$ copula, Gaussian KDE marginals model also has wider tails, but the distribution is shifted to the right side of the plane. GAN has generated observations on a complex dependency structure, here we can see stable clusters of points in certain areas of the plane, so visually, it seems that the GAN model is prone to overfitting. Since I have generated 10,000 observations from each model, I sort a sequence of these observations day-by-day to obtain a set of paths of price changes. The test set consists of about 1,000 days, so I construct 10 paths by each model. The generated paths of Brent price is also depicted in Figure \ref{fig:paths}. The $t$ copula, $t$ marginals model has generated a few significant outliers, while other models seems more stable.
 
 \begin{figure}[!ht]
     \begin{center}
@@ -376,7 +376,7 @@ I apply Kolmogorov-Smirnov test (KS) and Kullback–Leibler divergence (KL) to c
     \label{tab:quality}
 \end{table}
 
-To calculate the VaR, I use a commodity portfolio with a total amount \$100000, where each commodity is weighted with respect to Rogers International Commodity Index. I use prices at the end of the train set (23.01.2017). I calculate the one day profit as
+To calculate the VaR, I use a commodity portfolio with a total amount \$10,0000, where each commodity is weighted with respect to Rogers International Commodity Index. I use prices at the end of the train set (23.01.2017). I calculate the one day profit as
 $$\text{profit}_t = \sum_{i=1}^6 r_{t,i} \times w_i$$
 with $i \in \{1, 2, 3, 4, 5 , 6\}$ commodities, returns values $r_{t, i}$ and weights by index $w_i$. Calculated profit values is represented by smooth and normalized histograms in Figure \ref{fig:profit}. We see that $t$ copula has heavier tails than GAN and GBM, and is noticeably closer to real values.
 
@@ -421,8 +421,9 @@ In this work, I reviewed quality of three generative models: Geometric Brownian 
 
 For the task of risk measurement I have used the VaR and CVaR metrics regarding the portfolio of commodities is compiled by the Rogers International Commodity Index: Energy. The obtained results tell us that the $t$ copula, $t$ marginals model was the most accurate in the risk measurement problem for both metrics. GBM overestimates VaR, while GAN underestimates. The metric CVaR was underestimated by all models, however, the $t$ copula, $t$ marginals turned out to be accurate.
 
-Further research on this topic can be continued in the direction of modification and search for optimal GAN parameters to get rid of overfitting. In addition, it is reasonable to considered novel models that combine copulas and autoencoders models \cite{tagasovska2019copulas}, as well as GBM based on the $t$ distribution \cite{Nkemnole}.
+Further research on this topic can be continued in the direction of modification and search for optimal GAN parameters to get rid of overfitting. In addition, it is reasonable to considered novel models that combine copulas and autoencoders models \cite{tagasovska2019copulas}, as well as GBM based on the $t$-distribution \cite{Nkemnole}.
 
+\newpage
 \bibliography{main}
 
 \end{document}
