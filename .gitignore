@@ -19,3 +19,4 @@ report/main.out
 report/main.toc
 report/ctf_notes.md
 generation_2/.ipynb_checkpoints/*
+generation_2/.vscode/launch.json

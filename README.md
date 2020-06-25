@@ -1,22 +1,20 @@
 # Application of Generative Models for Risk Measurement in Commodity Trading
 Course project, HSE
 
-This repository contains ipynb notebooks and data sets for research on applacation of generative models for risk measurement in commodity trading. 
-
-Considering models (blue points are generated, orange points are real):
+This repository contains ipynb notebooks and data sets for research on applacation of generative models for risk measurement in commodity trading. Considering models (blue points are generated, orange points are real):
 
 <table>
 <tr>
-    <td><img src='generation_2/figs/gen_gbm.png' width=300></td>
-    <td><img src='generation_2/figs/gen_t_copula.png' width=300></td>
+    <td><img src='generation_2/gifs/gen_gbm.gif' width=300></td>
+    <td><img src='generation_2/gifs/gen_t_copula.gif' width=300></td>
 </tr>
 <tr>
     <td>Geometric Brownian Motion (GBM)</td>
     <td>t copula with t marginals</td>
 </tr>
 <tr>
-    <td><img src='generation_2/figs/gen_t_copulaKDE.png' width=300></td>
-    <td><img src='generation_2/figs/gen_tgan.png' width=300></td>
+    <td><img src='generation_2/gifs/gen_t_copulaKDE.gif' width=300></td>
+    <td><img src='generation_2/gifs/gen_tgan.gif' width=300></td>
 </tr>
 <tr>
     <td>t copula with Gaussian KDE marginals</td>
